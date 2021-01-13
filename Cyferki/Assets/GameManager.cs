@@ -74,12 +74,17 @@ public class GameManager : MonoBehaviour
     }
     void GameOver()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     void WinGame()
     {
-        
+        SceneManager.LoadScene(0);
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     void Update()
