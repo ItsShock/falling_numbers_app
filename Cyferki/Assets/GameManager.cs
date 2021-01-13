@@ -1,14 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject btnCyferkaPrefab;
     [SerializeField] Transform kontenernaCyferki;
+    [SerializeField] Text txtLiczbaDocelowa;
+    [SerializeField] Text txtLiczbaPkt;
+    [SerializeField] Text txtLicznikCzasu;
+    int liczbaDocelowa = 21;
+    int liczbaPkt = 0;
+    float licznikPoczatkowy = 30f;
+    float licznik;
     void Start()
     {
         StartCoroutine(TworzNowaCyferke());
+        txtLiczbaDocelowa.text = liczbaDocelowa.ToString();
+        licznik = licznikPoczatkowy;
     }
 
     IEnumerator TworzNowaCyferke()
@@ -19,8 +30,62 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(TworzNowaCyferke());
     }
-    void Update()
+
+    void AktualizujElementyUI()
+    {
+        txtLiczbaPkt.text = liczbaPkt.ToString();
+    }
+
+    public void DodajPkt(int punkty)
+    {
+        liczbaPkt += punkty;
+    }
+
+    void OdliczajCzas()
+    {
+        if(licznik > 0)
+        {
+            licznik -= Time.deltaTime;
+            txtLicznikCzasu.text = licznik.ToString("f2");
+        }
+        else
+        {
+            GameOver();
+        }
+    }
+
+    public void SprawdzStatusGry()
+    {
+        if(licznik > 0)
+        {
+            if(liczbaPkt == liczbaDocelowa)
+            {
+                WinGame();
+            }
+            else if(liczbaPkt > liczbaDocelowa)
+            {
+                GameOver();
+            }
+        }
+        else
+        {
+            GameOver();
+        }
+    }
+    void GameOver()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    void WinGame()
     {
         
+    }
+
+    void Update()
+    {
+        AktualizujElementyUI();
+        OdliczajCzas();
+        SprawdzStatusGry();
     }
 }

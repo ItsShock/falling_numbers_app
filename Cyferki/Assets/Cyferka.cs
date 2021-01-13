@@ -8,8 +8,10 @@ public class Cyferka : MonoBehaviour
     RectTransform rt;
     GameObject txtCyferka;
     float predkoscOpadania = 100f;
+    GameManager gm;
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         txtCyferka = gameObject.transform.GetChild(0).gameObject;
         PrzypiszWartoscTxt();
         rt = GetComponent<RectTransform>();
@@ -24,7 +26,7 @@ public class Cyferka : MonoBehaviour
     public void PobierzWartosczPolaTxt()
     {
         int wybranaLiczba = System.Int32.Parse(txtCyferka.GetComponent<Text>().text);
-        print(wybranaLiczba);
+        gm.DodajPkt(wybranaLiczba);
     }
 
     void SpadajwDol()
