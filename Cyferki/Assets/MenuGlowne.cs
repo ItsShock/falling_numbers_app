@@ -14,4 +14,9 @@ public class MenuGlowne : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void PrzejdDoMenu()
+    {
+        SceneManager.LoadScene(0);
+   }
 }
