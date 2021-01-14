@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         {
             licznik -= Time.deltaTime;
             txtLicznikCzasu.text = licznik.ToString("f2");
+            ZmienKolorLicznika();
         }
         else
         {
@@ -85,6 +86,18 @@ public class GameManager : MonoBehaviour
     public void GoToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    void ZmienKolorLicznika() 
+    {
+        if(licznik <= 5)
+        {
+            txtLicznikCzasu.color = Color.red;
+        }
+        else if(licznik <= 10)
+        {
+            txtLicznikCzasu.color = Color.yellow;
+        }
     }
 
     void Update()
