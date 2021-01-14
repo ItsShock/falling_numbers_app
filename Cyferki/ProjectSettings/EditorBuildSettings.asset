@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MenuGlowne.unity
-    guid: 93d7c31e1ada92d4e8a49fb6d110fa5d
+    path: Assets/Scenes/MenuGlowne 1.unity
+    guid: 6487083b8a8f3a64db3fb09e3a3140c6
   - enabled: 1
     path: Assets/Scenes/MenuGameOver 1.unity
     guid: 90fe64c5c79b64148a7ff877a6f7abcf
   - enabled: 1
     path: Assets/Scenes/Gra.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MenuWin.unity
+    guid: 93d7c31e1ada92d4e8a49fb6d110fa5d
   m_configObjects: {}
